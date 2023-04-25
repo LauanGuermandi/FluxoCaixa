@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Aggregates\" />
+    <ProjectReference Include="..\..\building-blocks\FluxoCaixa.Core\FluxoCaixa.Core.csproj" />
   </ItemGroup>
 
 </Project>

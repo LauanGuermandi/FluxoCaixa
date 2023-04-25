@@ -1,8 +1,9 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using FluxoCaixa.Infrastructure.Data.Extensions;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace FluxoCaixa.Infrastructure.Data.Context
+namespace FluxoCaixa.Infrastructure.Data.Context.Identidade
 {
 	public class IdentidadeContext : IdentityDbContext
 	{
@@ -13,6 +14,8 @@ namespace FluxoCaixa.Infrastructure.Data.Context
 		protected override void OnModelCreating(ModelBuilder builder)
 		{
 			base.OnModelCreating(builder);
+
+			builder.UseDatabasePropertiesAsUppperCase();
 
 			builder.Entity<IdentityUser>(entity =>
 			{

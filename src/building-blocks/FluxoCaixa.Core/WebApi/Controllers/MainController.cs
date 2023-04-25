@@ -1,14 +1,25 @@
-﻿using FluentValidation.Results;
+﻿using System.Security.Claims;
+using FluentValidation.Results;
 using FluxoCaixa.Core.WebApi.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace FluxoCaixa.Core.WebApi.Controllers;
 [ApiController]
 [Route("api/[controller]")]
+[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
 public abstract class MainController : Controller
 {
 	protected ICollection<string> Errors = new List<string>();
+
+	protected string GetAuthenticatedUserEmail()
+	{
+		var identity = User.Identity as ClaimsIdentity;
+		var email = identity?.FindFirst(ClaimTypes.Email)?.Value.ToString();
+		return !string.IsNullOrEmpty(email) ? email : string.Empty;
+	}
 
 	protected ActionResult CustomResponse(object? result = null)
 	{
