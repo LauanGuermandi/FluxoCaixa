@@ -1,0 +1,28 @@
+{
+  "profiles": {
+    "FluxoCaixa.Api - Development": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "IDENTIDADE_CONNECTION_STRING": "Server=127.0.0.1;Database=IDENTIDADE;User Id=sa;Password=Desafio@123",
+        "IDENTIDADE_CHAVE": "o@df8dkH0isgh567DY@n"
+      },
+      "dotnetRunMessages": true,
+      "applicationUrl": "https://localhost:7001;http://localhost:5001"
+    },
+    "FluxoCaixa.Api - Development(Docker)": {
+      "commandName": "Docker",
+      "launchBrowser": true,
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/swagger",
+      "publishAllPorts": true,
+      "useSSL": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "IDENTIDADE_CONNECTION_STRING": "Server=sqlserver;Database=IDENTIDADE;User Id=sa;Password=Desafio@123",
+        "IDENTIDADE_CHAVE": "o@df8dkH0isgh567DY@n"
+      }
+    }
+  }
+}
