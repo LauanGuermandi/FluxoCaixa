@@ -61,6 +61,7 @@ public class IdentidadeService : IIdentidadeService
 		claims.Add(new Claim(JwtRegisteredClaimNames.Nbf, ToUnixEpochDate(DateTime.UtcNow).ToString()));
 		claims.Add(new Claim(JwtRegisteredClaimNames.Iat, ToUnixEpochDate(DateTime.UtcNow).ToString(), ClaimValueTypes.Integer64));
 		claims.Add(new Claim(JwtRegisteredClaimNames.Email, user.Email ?? ""));
+
 		foreach (var userRole in userRoles)
 		{
 			claims.Add(new Claim(ClaimTypes.Role, userRole));

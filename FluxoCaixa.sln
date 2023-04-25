@@ -7,8 +7,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{EE
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Building Blocks", "Building Blocks", "{492F99EC-24B0-4BA1-B287-FAFA9C2E666E}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api Gateways", "Api Gateways", "{48639164-346A-4DC8-A8D0-8E9C699AA6B3}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluxoCaixa.Api", "src\services\FluxoCaixa.Api\FluxoCaixa.Api.csproj", "{F0C63D4F-C529-4F49-871C-75FAD4A11125}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluxoCaixa.Domain", "src\services\FluxoCaixa.Domain\FluxoCaixa.Domain.csproj", "{817BB5FE-0F7F-4F44-BD8C-BC890E8B6B01}"

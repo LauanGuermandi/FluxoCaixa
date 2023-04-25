@@ -1,6 +1,7 @@
 ﻿using FluxoCaixa.Core.WebApi.Controllers;
 using FluxoCaixa.Domain.Models.Identidade;
 using FluxoCaixa.Domain.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FluxoCaixa.Api.Controllers;
@@ -12,6 +13,7 @@ public class IdentidadeController : MainController
 	public IdentidadeController(IIdentidadeService identidadeService)
 		=> _identidadeService = identidadeService;
 
+	[AllowAnonymous]
 	[HttpPost("autenticar")]
 	public async Task<IActionResult> EfetuarLogin(UsuarioLogin usuarioLogin)
 	{
