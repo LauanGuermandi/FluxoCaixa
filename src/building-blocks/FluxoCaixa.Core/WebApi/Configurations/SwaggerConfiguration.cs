@@ -10,6 +10,13 @@ public static class SwaggerConfiguration
 		services.AddSwaggerGen(c =>
 		{
 			c.SwaggerDoc(version, new OpenApiInfo { Title = $"{appName} - {Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")}", Version = version });
+
+			c.MapType<DateOnly>(() => new OpenApiSchema
+			{
+				Type = "string",
+				Format = "date"
+			});
+
 			c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
 			{
 				In = ParameterLocation.Header,

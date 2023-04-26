@@ -6,9 +6,10 @@
       "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "FLUXOCAIXA_CONNECTION_STRING": "Server=127.0.0.1;Database=FLUXO_CAIXA;User Id=sa;Password=Desafio@123",
-        "IDENTIDADE_CONNECTION_STRING": "Server=127.0.0.1;Database=IDENTIDADE;User Id=sa;Password=Desafio@123",
-        "MESSAGE_BUS_CONNECTION_STRING": "host=127.0.0.1:5672;publisherConfirms=true;timeout=10;username=desafio;password=Desafio@123",
+        "FLUXOCAIXA_CONNECTION_STRING": "Server=127.0.0.1;Database=FLUXO_CAIXA;User Id=sa;Password=Desafio123",
+        "IDENTIDADE_CONNECTION_STRING": "Server=127.0.0.1;Database=IDENTIDADE;User Id=sa;Password=Desafio123",
+        "MESSAGE_BUS_CONNECTION_STRING": "host=127.0.0.1:5672;publisherConfirms=true;timeout=10;username=desafio;password=Desafio123",
+        "HEALTH_CHECK_MESSAGE_BUS_CONNECTION": "amqp://desafio:Desafio123@127.0.0.1:5672",
         "IDENTIDADE_CHAVE": "o@df8dkH0isgh567DY@n"
       },
       "dotnetRunMessages": true,
@@ -22,9 +23,10 @@
       "useSSL": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "FLUXOCAIXA_CONNECTION_STRING": "Server=sqlserver;Database=FLUXO_CAIXA;User Id=sa;Password=Desafio@123",
-        "IDENTIDADE_CONNECTION_STRING": "Server=sqlserver;Database=IDENTIDADE;User Id=sa;Password=Desafio@123",
-        "MESSAGE_BUS_CONNECTION_STRING": "host=rabbitmq:5672;publisherConfirms=true;timeout=10;username=desafio;password=Desafio@123",
+        "FLUXOCAIXA_CONNECTION_STRING": "Server=sqlserver;Database=FLUXO_CAIXA;User Id=sa;Password=Desafio123",
+        "IDENTIDADE_CONNECTION_STRING": "Server=sqlserver;Database=IDENTIDADE;User Id=sa;Password=Desafio123",
+        "MESSAGE_BUS_CONNECTION_STRING": "host=rabbitmq:5672;publisherConfirms=true;timeout=10;username=desafio;password=Desafio123",
+        "HEALTH_CHECK_MESSAGE_BUS_CONNECTION": "amqp://desafio:Desafio123@rabbitmq:5672",
         "IDENTIDADE_CHAVE": "o@df8dkH0isgh567DY@n"
       }
     }

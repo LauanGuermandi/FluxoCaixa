@@ -2,5 +2,5 @@
 
 public class RelatorioConsolidadoDiarioDto
 {
-	public string Data { get; set; }
+	public DateOnly Data { get; set; }
 }

@@ -4,8 +4,9 @@
       "commandName": "Project",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "FLUXOCAIXA_CONNECTION_STRING": "Server=127.0.0.1;Database=FLUXO_CAIXA;User Id=sa;Password=Desafio@123;TrustServerCertificate=True;Encrypt=False;",
-        "MESSAGE_BUS_CONNECTION_STRING": "host=127.0.0.1:5672;publisherConfirms=true;timeout=10;username=desafio;password=Desafio@123"
+        "FLUXOCAIXA_CONNECTION_STRING": "Server=127.0.0.1;Database=FLUXO_CAIXA;User Id=sa;Password=Desafio123;TrustServerCertificate=True;Encrypt=False;",
+        "MESSAGE_BUS_CONNECTION_STRING": "host=127.0.0.1:5672;publisherConfirms=true;timeout=10;username=desafio;password=Desafio123",
+        "HEALTH_CHECK_MESSAGE_BUS_CONNECTION": "amqp://desafio:Desafio123@127.0.0.1:5672"
       },
       "dotnetRunMessages": true
     },
@@ -17,8 +18,9 @@
       "useSSL": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "FLUXOCAIXA_CONNECTION_STRING": "Server=sqlserver;Database=FLUXO_CAIXA;User Id=sa;Password=Desafio@123;TrustServerCertificate=True;Encrypt=False;",
-        "MESSAGE_BUS_CONNECTION_STRING": "host=rabbitmq:5672;publisherConfirms=true;timeout=10;username=desafio;password=Desafio@123"
+        "FLUXOCAIXA_CONNECTION_STRING": "Server=sqlserver;Database=FLUXO_CAIXA;User Id=sa;Password=Desafio123;TrustServerCertificate=True;Encrypt=False;",
+        "MESSAGE_BUS_CONNECTION_STRING": "host=rabbitmq:5672;publisherConfirms=true;timeout=10;username=desafio;password=Desafio123",
+        "HEALTH_CHECK_MESSAGE_BUS_CONNECTION": "amqp://desafio:Desafio123@rabbitmq:5672"
       }
     }
   }
