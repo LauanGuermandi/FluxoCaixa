@@ -1,14 +1,14 @@
 # FluxoCaixa.Api
 
-`
+
 Aplicação para controle de fluxo de caixa e processamento de relatório.
-`
+
 
 ## Tecnologias utilizadas
 
-`
+
 O backend foi contruído utilizando .NET na versão 6, por ser a última versão LTS lançada. Utilizei SQL Server 2019 como banco de dados devido a sua robustez como banco relacional. Utilizei o RabbitMQ para gereciamento da fila de processamento de relatório.
-`
+
 
 
 ## Solução
