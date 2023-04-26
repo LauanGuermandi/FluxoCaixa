@@ -39,3 +39,14 @@ O Domínio contém agregações, com entidades ricas, facilitando o gerenciament
 ## Design do código
 
 ![plot](./images/design.png)
+
+## Executando o projeto
+
+- Execute o seguinte comando para rodar os containers da aplicação.
+```
+docker-compose up -d
+```
+
+- Com o comando `docker-compose ps` você pode verificar se todos containers estão sendo executados.
+
+- Para abrir o swagger da api no navegador, acesse o [link](http://127.0.0.1:8001/swagger/index.html).

@@ -21,6 +21,7 @@ services:
       RABBITMQ_DEFAULT_VHOST: /
 
   fluxocaixa_api:
+    restart: always
     depends_on:
       - rabbitmq
       - sqlserver
@@ -38,6 +39,7 @@ services:
       IDENTIDADE_CHAVE: "o@df8dkH0isgh567DY@n"
 
   relatorio_consolidado_diario:
+    restart: always
     depends_on:
       - rabbitmq
       - sqlserver
