@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using FluxoCaixa.Core.Exceptions;
 using FluxoCaixa.Domain.Aggregates.CaixaAggregation;
-using FluxoCaixa.Domain.Aggregates.LojaAggregation;
+using FluxoCaixa.Domain.Aggregates.UsuarioAggregation;
 using FluxoCaixa.Domain.Dtos;
 using FluxoCaixa.Domain.Services;
 
@@ -35,7 +35,7 @@ public class LancamentoService : ILancamentoService
 		}
 
 		caixa.AdicionarLancamento(lancamento);
-		_caixaRepository.AtualizarCaixa(caixa);
+		await _caixaRepository.AtualizarCaixa(caixa);
 		await _caixaRepository.UnitOfWork.Commit();
 	}
 }

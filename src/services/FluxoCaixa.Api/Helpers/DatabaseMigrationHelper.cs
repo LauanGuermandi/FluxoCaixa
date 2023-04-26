@@ -1,5 +1,5 @@
 ﻿using FluxoCaixa.Domain.Aggregates.CaixaAggregation;
-using FluxoCaixa.Domain.Aggregates.LojaAggregation;
+using FluxoCaixa.Domain.Aggregates.UsuarioAggregation;
 using FluxoCaixa.Infrastructure.Data.Context.FluxoCaixa;
 using FluxoCaixa.Infrastructure.Data.Context.Identidade;
 using Microsoft.AspNetCore.Identity;

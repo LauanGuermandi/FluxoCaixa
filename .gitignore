@@ -475,3 +475,6 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+Relatorios/*
+/src/services/relatorios/FluxoCaixa.Relatorio.ConsolidadoDiario/Relatorios

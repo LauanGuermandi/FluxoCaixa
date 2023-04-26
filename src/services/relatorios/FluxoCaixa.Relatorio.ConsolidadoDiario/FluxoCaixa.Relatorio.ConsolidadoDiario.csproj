@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>dotnet-FluxoCaixa.Relatorio.ConsolidadoDiario-5a16b859-5842-4590-b366-3e5eefb5f2d3</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.0.123" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
+    <PackageReference Include="Serilog.AspNetCore" Version="6.1.0" />
+    <PackageReference Include="Serilog.Sinks.Seq" Version="5.2.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\adapters\MessageBus\MessageBus.csproj" />
+    <ProjectReference Include="..\..\..\building-blocks\FluxoCaixa.Core\FluxoCaixa.Core.csproj" />
+    <ProjectReference Include="..\..\FluxoCaixa.Domain\FluxoCaixa.Domain.csproj" />
+  </ItemGroup>
+</Project>

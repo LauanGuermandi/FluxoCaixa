@@ -18,5 +18,4 @@ public class CaixaRepository : ICaixaRepository
 		await _context.Lancamentos.AddRangeAsync(caixa.Lancamentos);
 		_context.Caixas.Update(caixa);
 	}
-
 }
