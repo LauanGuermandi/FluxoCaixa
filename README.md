@@ -50,3 +50,12 @@ docker-compose up -d
 - Com o comando `docker-compose ps` você pode verificar se todos containers estão sendo executados.
 
 - Para abrir o swagger da api no navegador, acesse o [link](http://127.0.0.1:8001/swagger/index.html).
+
+## Postman Collection
+
+[FluxoCaixa.Api - Postman Collection](./examples/FluxoCaixa.Api%20-%20Collection.postman_collection.json)
+
+### Observações:
+- Lembrar de verificar o token de autorização na collection, pois ele expira.
+- Verificar a data no body na hora de solicitar o processamento de um relatório
+- Verificar o Id do relatório na rota da requisição, para fazer download do relatório.
