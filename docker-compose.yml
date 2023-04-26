@@ -21,12 +21,15 @@ services:
       RABBITMQ_DEFAULT_VHOST: /
 
   fluxocaixa_api:
+    restart: always
     depends_on:
       - rabbitmq
       - sqlserver
     build: 
       dockerfile: src/services/FluxoCaixa.Api/Dockerfile
       context: .
+    volumes:
+      - ./relatorios:/app/Relatorios 
     ports:
       - "8001:80"
       - "8002:443"
@@ -38,12 +41,15 @@ services:
       IDENTIDADE_CHAVE: "o@df8dkH0isgh567DY@n"
 
   relatorio_consolidado_diario:
+    restart: always
     depends_on:
       - rabbitmq
       - sqlserver
     build: 
       dockerfile: src/services/relatorios/FluxoCaixa.Relatorio.ConsolidadoDiario/Dockerfile
       context: .
+    volumes:
+      - ./relatorios:/app/Relatorios 
     environment:
       ASPNETCORE_ENVIRONMENT: "Development"
       FLUXOCAIXA_CONNECTION_STRING: "Server=sqlserver;Database=FLUXO_CAIXA;User Id=sa;Password=Desafio@123;TrustServerCertificate=True;Encrypt=False;"
