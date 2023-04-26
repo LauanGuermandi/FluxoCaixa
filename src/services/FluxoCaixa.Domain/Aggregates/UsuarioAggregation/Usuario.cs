@@ -2,7 +2,7 @@
 using FluxoCaixa.Domain.Aggregates.CaixaAggregation;
 using FluxoCaixa.Domain.ValueObjects;
 
-namespace FluxoCaixa.Domain.Aggregates.LojaAggregation;
+namespace FluxoCaixa.Domain.Aggregates.UsuarioAggregation;
 public class Usuario : Entity, IAggregateRoot
 {
 	public string Nome { get; set; }

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace Identidade.Extensions;
+namespace Identidade;
 
 public class MessagesExtension : IdentityErrorDescriber
 {

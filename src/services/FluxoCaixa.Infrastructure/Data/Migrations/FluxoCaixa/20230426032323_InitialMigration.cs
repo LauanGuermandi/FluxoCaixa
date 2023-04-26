@@ -22,6 +22,18 @@ namespace FluxoCaixa.Infrastructure.Data.Migrations.FluxoCaixa
                 });
 
             migrationBuilder.CreateTable(
+                name: "RELATORIOS",
+                columns: table => new
+                {
+                    ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    STATUS = table.Column<byte>(type: "tinyint", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RELATORIOS", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "LANCAMENTOS",
                 columns: table => new
                 {
@@ -34,9 +46,9 @@ namespace FluxoCaixa.Infrastructure.Data.Migrations.FluxoCaixa
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_LANCAMENTO", x => x.ID);
+                    table.PrimaryKey("PK_LANCAMENTOS", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_LANCAMENTO_CAIXAS_CAIXAID",
+                        name: "FK_LANCAMENTOS_CAIXAS_CAIXAID",
                         column: x => x.IDCAIXA,
                         principalTable: "CAIXAS",
                         principalColumn: "ID",
@@ -59,6 +71,25 @@ namespace FluxoCaixa.Infrastructure.Data.Migrations.FluxoCaixa
                         name: "FK_CAIXAS_LOJA_LOJAID",
                         column: x => x.IDCAIXA,
                         principalTable: "CAIXAS",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "RELATORIO_METADADOS",
+                columns: table => new
+                {
+                    ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    VALOR = table.Column<string>(type: "text", nullable: false),
+                    IDRELATORIO = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RELATORIOMETADADOS", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_RELATORIOS_RELATORIOMETADADOS_METADADOSID",
+                        column: x => x.IDRELATORIO,
+                        principalTable: "RELATORIOS",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -105,6 +136,12 @@ namespace FluxoCaixa.Infrastructure.Data.Migrations.FluxoCaixa
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_RELATORIO_METADADOS_IDRELATORIO",
+                table: "RELATORIO_METADADOS",
+                column: "IDRELATORIO",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_USUARIOS_IDLOJA",
                 table: "USUARIOS",
                 column: "IDLOJA");
@@ -116,7 +153,13 @@ namespace FluxoCaixa.Infrastructure.Data.Migrations.FluxoCaixa
                 name: "LANCAMENTOS");
 
             migrationBuilder.DropTable(
+                name: "RELATORIO_METADADOS");
+
+            migrationBuilder.DropTable(
                 name: "USUARIOS");
+
+            migrationBuilder.DropTable(
+                name: "RELATORIOS");
 
             migrationBuilder.DropTable(
                 name: "LOJAS");

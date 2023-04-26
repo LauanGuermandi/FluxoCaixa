@@ -1,4 +1,4 @@
-﻿using FluxoCaixa.Domain.Aggregates.LojaAggregation;
+﻿using FluxoCaixa.Domain.Aggregates.UsuarioAggregation;
 using FluxoCaixa.Domain.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;

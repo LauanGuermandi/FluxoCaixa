@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FluxoCaixa.Infrastructure.Data.Migrations.FluxoCaixa
 {
     [DbContext(typeof(FluxoCaixaContext))]
-    [Migration("20230425210648_InitialMigration")]
+    [Migration("20230426032323_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -71,7 +71,7 @@ namespace FluxoCaixa.Infrastructure.Data.Migrations.FluxoCaixa
                         .HasColumnName("VALOR");
 
                     b.HasKey("Id")
-                        .HasName("PK_LANCAMENTO");
+                        .HasName("PK_LANCAMENTOS");
 
                     b.HasIndex("DataLancamento");
 
@@ -112,7 +112,49 @@ namespace FluxoCaixa.Infrastructure.Data.Migrations.FluxoCaixa
                     b.ToTable("LOJAS", (string)null);
                 });
 
-            modelBuilder.Entity("FluxoCaixa.Domain.Aggregates.LojaAggregation.Usuario", b =>
+            modelBuilder.Entity("FluxoCaixa.Domain.Aggregates.RelatorioAggregation.Relatorio", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("ID");
+
+                    b.Property<byte>("Status")
+                        .HasColumnType("tinyint")
+                        .HasColumnName("STATUS");
+
+                    b.HasKey("Id")
+                        .HasName("PK_RELATORIOS");
+
+                    b.ToTable("RELATORIOS", (string)null);
+                });
+
+            modelBuilder.Entity("FluxoCaixa.Domain.Aggregates.RelatorioAggregation.RelatorioMetadados", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("ID");
+
+                    b.Property<Guid>("IdRelatorio")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("IDRELATORIO");
+
+                    b.Property<string>("Valor")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("VALOR");
+
+                    b.HasKey("Id")
+                        .HasName("PK_RELATORIOMETADADOS");
+
+                    b.HasIndex("IdRelatorio")
+                        .IsUnique();
+
+                    b.ToTable("RELATORIO_METADADOS", (string)null);
+                });
+
+            modelBuilder.Entity("FluxoCaixa.Domain.Aggregates.UsuarioAggregation.Usuario", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -148,7 +190,7 @@ namespace FluxoCaixa.Infrastructure.Data.Migrations.FluxoCaixa
                         .HasForeignKey("IdCaixa")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("FK_LANCAMENTO_CAIXAS_CAIXAID");
+                        .HasConstraintName("FK_LANCAMENTOS_CAIXAS_CAIXAID");
 
                     b.Navigation("Caixa");
                 });
@@ -165,7 +207,19 @@ namespace FluxoCaixa.Infrastructure.Data.Migrations.FluxoCaixa
                     b.Navigation("Caixa");
                 });
 
-            modelBuilder.Entity("FluxoCaixa.Domain.Aggregates.LojaAggregation.Usuario", b =>
+            modelBuilder.Entity("FluxoCaixa.Domain.Aggregates.RelatorioAggregation.RelatorioMetadados", b =>
+                {
+                    b.HasOne("FluxoCaixa.Domain.Aggregates.RelatorioAggregation.Relatorio", "Relatorio")
+                        .WithOne("Metadados")
+                        .HasForeignKey("FluxoCaixa.Domain.Aggregates.RelatorioAggregation.RelatorioMetadados", "IdRelatorio")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_RELATORIOS_RELATORIOMETADADOS_METADADOSID");
+
+                    b.Navigation("Relatorio");
+                });
+
+            modelBuilder.Entity("FluxoCaixa.Domain.Aggregates.UsuarioAggregation.Usuario", b =>
                 {
                     b.HasOne("FluxoCaixa.Domain.Aggregates.CaixaAggregation.Loja", "Loja")
                         .WithMany("Usuarios")
@@ -187,6 +241,11 @@ namespace FluxoCaixa.Infrastructure.Data.Migrations.FluxoCaixa
             modelBuilder.Entity("FluxoCaixa.Domain.Aggregates.CaixaAggregation.Loja", b =>
                 {
                     b.Navigation("Usuarios");
+                });
+
+            modelBuilder.Entity("FluxoCaixa.Domain.Aggregates.RelatorioAggregation.Relatorio", b =>
+                {
+                    b.Navigation("Metadados");
                 });
 #pragma warning restore 612, 618
         }

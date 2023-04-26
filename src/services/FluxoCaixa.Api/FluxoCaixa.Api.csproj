@@ -8,10 +8,6 @@
     <DockerfileContext>..\..\..</DockerfileContext>
   </PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="Helpers\kunkqyet.mqf~" />
-  </ItemGroup>
-
 	<ItemGroup>
 		<PackageReference Include="AspNetCore.HealthChecks.UI" Version="6.0.5" />
 		<PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="6.0.5" />
@@ -19,10 +15,13 @@
 		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
 		<PackageReference Include="Hellang.Middleware.ProblemDetails" Version="6.5.1" />
 		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
+		<PackageReference Include="Serilog.AspNetCore" Version="6.1.0" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <ProjectReference Include="..\..\adapters\Identidade\Identidade.csproj" />
+	  <ProjectReference Include="..\..\adapters\Logging\Logging.csproj" />
+	  <ProjectReference Include="..\..\adapters\MessageBus\MessageBus.csproj" />
 	  <ProjectReference Include="..\..\building-blocks\FluxoCaixa.Core\FluxoCaixa.Core.csproj" />
 	  <ProjectReference Include="..\FluxoCaixa.Domain\FluxoCaixa.Domain.csproj" />
 	  <ProjectReference Include="..\FluxoCaixa.Infrastructure\FluxoCaixa.Infrastructure.csproj" />

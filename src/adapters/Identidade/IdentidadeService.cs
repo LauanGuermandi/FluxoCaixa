@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
-namespace Identidade.Services;
+namespace Identidade;
 public class IdentidadeService : IIdentidadeService
 {
 	private readonly SignInManager<IdentityUser> _signInManager;
@@ -41,9 +41,7 @@ public class IdentidadeService : IIdentidadeService
 		var result = await _signInManager.PasswordSignInAsync(email, senha, false, false);
 
 		if (result == null)
-		{
 			throw new UnexpectedError("Erro inesperado ao efetuar login.");
-		}
 
 		return new EfetuarLoginResultado()
 		{
@@ -63,9 +61,7 @@ public class IdentidadeService : IIdentidadeService
 		claims.Add(new Claim(JwtRegisteredClaimNames.Email, user.Email ?? ""));
 
 		foreach (var userRole in userRoles)
-		{
 			claims.Add(new Claim(ClaimTypes.Role, userRole));
-		}
 
 		var identityClaims = new ClaimsIdentity();
 		identityClaims.AddClaims(claims);

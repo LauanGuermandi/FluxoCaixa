@@ -1,5 +1,5 @@
 ﻿using FluxoCaixa.Core.DomainObjects;
-using FluxoCaixa.Domain.Aggregates.LojaAggregation;
+using FluxoCaixa.Domain.Aggregates.UsuarioAggregation;
 using FluxoCaixa.Domain.ValueObjects;
 
 namespace FluxoCaixa.Domain.Aggregates.CaixaAggregation;

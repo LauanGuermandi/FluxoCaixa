@@ -1,6 +1,6 @@
 ﻿using FluxoCaixa.Core.Data;
 using FluxoCaixa.Domain.Aggregates.CaixaAggregation;
-using FluxoCaixa.Domain.Aggregates.LojaAggregation;
+using FluxoCaixa.Domain.Aggregates.UsuarioAggregation;
 using FluxoCaixa.Domain.ValueObjects;
 using FluxoCaixa.Infrastructure.Data.Context.FluxoCaixa;
 using Microsoft.EntityFrameworkCore;

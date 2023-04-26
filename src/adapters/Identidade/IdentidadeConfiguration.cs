@@ -1,7 +1,6 @@
 ﻿using System.Text;
 using FluxoCaixa.Core.Exceptions;
 using FluxoCaixa.Domain.Models.Identidade;
-using Identidade.Extensions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
@@ -9,7 +8,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 
-namespace Identidade.Configurations;
+namespace Identidade;
 
 public static class IdentidadeConfiguration
 {
@@ -23,9 +22,7 @@ public static class IdentidadeConfiguration
 
 		var identidadeChave = Environment.GetEnvironmentVariable(IdentitySettings.IdentidadeChaveVariable);
 		if (string.IsNullOrEmpty(identidadeChave))
-		{
 			throw new RequiredConfigurationException("Erro ao obter chave referente ao contexto de identidade.");
-		}
 
 		var key = Encoding.ASCII.GetBytes(identidadeChave);
 
