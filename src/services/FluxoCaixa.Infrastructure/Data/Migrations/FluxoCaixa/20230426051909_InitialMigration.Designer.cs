@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FluxoCaixa.Infrastructure.Data.Migrations.FluxoCaixa
 {
     [DbContext(typeof(FluxoCaixaContext))]
-    [Migration("20230426032323_InitialMigration")]
+    [Migration("20230426051909_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -118,6 +118,10 @@ namespace FluxoCaixa.Infrastructure.Data.Migrations.FluxoCaixa
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("ID");
+
+                    b.Property<string>("CaminhoArquivo")
+                        .HasColumnType("varchar(max)")
+                        .HasColumnName("CAMINHOARQUIVO");
 
                     b.Property<byte>("Status")
                         .HasColumnType("tinyint")

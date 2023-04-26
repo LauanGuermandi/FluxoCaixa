@@ -1,8 +1,10 @@
-﻿using FluxoCaixa.Domain.Dtos;
+﻿using FluxoCaixa.Domain.Aggregates.RelatorioAggregation;
+using FluxoCaixa.Domain.Dtos;
 
 namespace FluxoCaixa.Domain.Services;
 
 public interface IRelatorioService
 {
-	Task SolicitarRelatorioConsolidadoDiario(SolicitacaoRelatorioConsolidadoDiario solicitacaoRelatorioConsolidadoDiario);
+	Task<Relatorio> ObterRelatorio(Guid idRelatorio);
+	Task<Relatorio> SolicitarRelatorioConsolidadoDiario(SolicitacaoRelatorioConsolidadoDiario solicitacaoRelatorioConsolidadoDiario);
 }
