@@ -1,0 +1,50 @@
+version: '3'
+
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+      SA_PASSWORD: "Desafio@123"
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: "Developer"
+    ports:
+      - "1433:1433"
+
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    environment:
+      RABBITMQ_DEFAULT_USER: desafio
+      RABBITMQ_DEFAULT_PASS: Desafio@123
+      RABBITMQ_DEFAULT_VHOST: /
+
+  fluxocaixa_api:
+    depends_on:
+      - rabbitmq
+      - sqlserver
+    build: 
+      dockerfile: src/services/FluxoCaixa.Api/Dockerfile
+      context: .
+    ports:
+      - "8001:80"
+      - "8002:443"
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      FLUXOCAIXA_CONNECTION_STRING: "Server=sqlserver;Database=FLUXO_CAIXA;User Id=sa;Password=Desafio@123"
+      IDENTIDADE_CONNECTION_STRING: "Server=sqlserver;Database=IDENTIDADE;User Id=sa;Password=Desafio@123"
+      MESSAGE_BUS_CONNECTION_STRING: "host=rabbitmq:5672;publisherConfirms=true;timeout=10;username=desafio;password=Desafio@123"
+      IDENTIDADE_CHAVE: "o@df8dkH0isgh567DY@n"
+
+  relatorio_consolidado_diario:
+    depends_on:
+      - rabbitmq
+      - sqlserver
+    build: 
+      dockerfile: src/services/relatorios/FluxoCaixa.Relatorio.ConsolidadoDiario/Dockerfile
+      context: .
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      FLUXOCAIXA_CONNECTION_STRING: "Server=sqlserver;Database=FLUXO_CAIXA;User Id=sa;Password=Desafio@123;TrustServerCertificate=True;Encrypt=False;"
+      MESSAGE_BUS_CONNECTION_STRING: "host=rabbitmq:5672;publisherConfirms=true;timeout=10;username=desafio;password=Desafio@123"
