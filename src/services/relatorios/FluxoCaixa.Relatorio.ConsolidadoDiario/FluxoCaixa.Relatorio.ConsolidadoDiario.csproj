@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Worker">
+<Project Sdk="Microsoft.NET.Sdk.Worker">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\adapters\Logging\Logging.csproj" />
     <ProjectReference Include="..\..\..\adapters\MessageBus\MessageBus.csproj" />
     <ProjectReference Include="..\..\..\building-blocks\FluxoCaixa.Core\FluxoCaixa.Core.csproj" />
     <ProjectReference Include="..\..\FluxoCaixa.Domain\FluxoCaixa.Domain.csproj" />
