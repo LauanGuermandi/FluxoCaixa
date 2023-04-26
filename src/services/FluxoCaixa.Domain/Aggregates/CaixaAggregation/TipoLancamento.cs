@@ -1,6 +1,6 @@
 ﻿namespace FluxoCaixa.Domain.Aggregates.CaixaAggregation;
 public enum TipoLancamento
 {
-	Debito = 0,
-	Credito = 1
+	Debito = 1,
+	Credito = 2
 }

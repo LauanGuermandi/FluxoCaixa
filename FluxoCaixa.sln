@@ -17,6 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 		.gitignore = .gitignore
 		docker-compose.yml = docker-compose.yml
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Adapters", "Adapters", "{259BDC99-7A4E-493D-802C-AD737B897631}"
@@ -27,15 +28,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluxoCaixa.Infrastructure",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluxoCaixa.Core", "src\building-blocks\FluxoCaixa.Core\FluxoCaixa.Core.csproj", "{2592E8BD-7B79-4057-AB13-5C777A691035}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageBus", "src\adapters\MessageBus\MessageBus.csproj", "{730401FE-A928-46CB-8C7C-FDACD91013E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageBus", "src\adapters\MessageBus\MessageBus.csproj", "{730401FE-A928-46CB-8C7C-FDACD91013E1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Relatorios", "Relatorios", "{A674BBC4-F5FE-4A74-B476-FEE0BD42B4A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluxoCaixa.Relatorio.ConsolidadoDiario", "src\services\relatorios\FluxoCaixa.Relatorio.ConsolidadoDiario\FluxoCaixa.Relatorio.ConsolidadoDiario.csproj", "{C678CBE2-3B80-4CDA-B80D-EC0B11143CA7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluxoCaixa.Relatorio.ConsolidadoDiario", "src\services\relatorios\FluxoCaixa.Relatorio.ConsolidadoDiario\FluxoCaixa.Relatorio.ConsolidadoDiario.csproj", "{C678CBE2-3B80-4CDA-B80D-EC0B11143CA7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FluxoCaixa", "FluxoCaixa", "{CAA397DB-154E-445B-9276-AF49407F0C47}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logging", "src\adapters\Logging\Logging.csproj", "{ACCE1956-C5C8-4AAF-84B1-7C06C22AE816}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logging", "src\adapters\Logging\Logging.csproj", "{ACCE1956-C5C8-4AAF-84B1-7C06C22AE816}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
