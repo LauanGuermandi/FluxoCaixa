@@ -1,5 +1,4 @@
-﻿using System.Globalization;
-using FluentValidation;
+﻿using FluentValidation;
 using FluxoCaixa.Domain.Dtos;
 
 namespace FluxoCaixa.Api.Validators;
@@ -13,12 +12,11 @@ public class RelatorioConsolidadoDiarioDtoValidator : AbstractValidator<Relatori
 			.NotEmpty()
 			.WithMessage("A data deve conter um valor válido.");
 
-	protected bool EhDataValida(string data)
+	protected bool EhDataValida(DateOnly data)
 	{
 		try
 		{
-			var cultureInfo = new CultureInfo("pt-BR");
-			if (DateTime.Parse(data, cultureInfo, DateTimeStyles.NoCurrentDateDefault) <= DateTime.Now)
+			if (data.ToDateTime(TimeOnly.MinValue) <= DateTime.Now)
 			{
 				return true;
 			}

@@ -29,6 +29,7 @@ builder.Services.AddControllers()
 	{
 		options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
 		options.JsonSerializerOptions.Converters.Add(new DateOnlyJsonConverter());
+		options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
 	});
 
 // Adiciona configurações de validação
@@ -59,9 +60,13 @@ builder.Services.AddFluxoCaixaContextConfiguration();
 // Configuração do Message Bus com o RabbitMQ
 builder.Services.AddMessageBusConfiguration();
 
+// Configuração do health check
+builder.Services.AddHealthChecksConfiguration();
+
 var app = builder.Build();
 
 app.UseMiddleware<GlobalExceptionMiddleware>();
+app.UseHealthCheck();
 
 // Executa as migrations de seed no start da aplicação
 await DatabaseMigrationHelpers.RunMigrations(app);

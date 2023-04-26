@@ -48,8 +48,15 @@ docker-compose up -d
 ```
 
 - Com o comando `docker-compose ps` você pode verificar se todos containers estão sendo executados.
-
 - Para abrir o swagger da api no navegador, acesse o [link](http://127.0.0.1:8001/swagger/index.html).
+- Para verificar a saúde da api no navegador, acesse o [link](http://127.0.0.1:8001/healthz).
+- Este são o usuário e a senha pré-configurados:
+```
+{
+  "email": "admingeral@desafio.com.br",
+  "senha": "Desafio@123"
+}
+```
 
 ## Postman Collection
 

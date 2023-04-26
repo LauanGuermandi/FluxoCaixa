@@ -10,6 +10,9 @@
 		{
 			"name": "Autenticação",
 			"request": {
+				"auth": {
+					"type": "noauth"
+				},
 				"method": "POST",
 				"header": [],
 				"body": {
@@ -48,7 +51,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMmM2YzE2My1lMmUzLTQ3OWMtYTQ3ZS0zYzZjMTM3MWU1NGEiLCJqdGkiOiJmOWM2MmM1NC1hN2M3LTRhMjctYWE1Mi0xNDQyMTc5ZGEyMDIiLCJuYmYiOjE2ODI1MjIxNTUsImlhdCI6MTY4MjUyMjE1NSwiZW1haWwiOiJhZG1pbmdlcmFsQGRlc2FmaW8uY29tLmJyIiwiZXhwIjoxNjgyNjA4NTU1LCJpc3MiOiJkZXNhZmlvIiwiYXVkIjoiaHR0cHM6Ly9kZXNhZmlvLmNvbS5iciJ9.N5K1uZxgusE4tiPu7JgbWJKovEtGkJ3Cnmh1PimDk-o",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0NTRhY2I3OC1mNzFjLTQ3MGYtOTM0ZC0xYzk0MGE1NGU3ZDAiLCJqdGkiOiJjMTBkNjIwYS04YzM2LTQxNDQtYmU4Ny1hN2Y5ZmUxMmRjOTIiLCJuYmYiOjE2ODI1MzM4MzksImlhdCI6MTY4MjUzMzgzOSwiZW1haWwiOiJhZG1pbmdlcmFsQGRlc2FmaW8uY29tLmJyIiwiZXhwIjoxNjgyNjIwMjM5LCJpc3MiOiJkZXNhZmlvIiwiYXVkIjoiaHR0cHM6Ly9kZXNhZmlvLmNvbS5iciJ9.qcjnsAFq3mbZerXw1473tEhAqsZXwNjq_QvF-yIrGak",
 							"type": "string"
 						}
 					]
@@ -57,7 +60,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"valor\": 100,\r\n  \"tipoLancamento\": 2\r\n}",
+					"raw": "{\r\n  \"valor\": 100,\r\n  \"tipoLancamento\": \"Credito\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -100,7 +103,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"valor\": 100,\r\n  \"tipoLancamento\": 1\r\n}",
+					"raw": "{\r\n  \"valor\": 100,\r\n  \"tipoLancamento\": \"Debito\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -143,7 +146,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"data\": \"26/04/2023\"\r\n}",
+					"raw": "{\r\n  \"data\": \"2023-04-26\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -185,7 +188,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:8001/api/relatorio/5f4e272f-a722-4594-8411-625139516e61",
+					"raw": "http://127.0.0.1:8001/api/relatorio/b37c7cc3-0b80-405d-a0c5-e7bdc87c1b43",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -197,7 +200,7 @@
 					"path": [
 						"api",
 						"relatorio",
-						"5f4e272f-a722-4594-8411-625139516e61"
+						"b37c7cc3-0b80-405d-a0c5-e7bdc87c1b43"
 					]
 				}
 			},

@@ -4,7 +4,7 @@ services:
   sqlserver:
     image: mcr.microsoft.com/mssql/server:2019-latest
     environment:
-      SA_PASSWORD: "Desafio@123"
+      SA_PASSWORD: "Desafio123"
       ACCEPT_EULA: "Y"
       MSSQL_PID: "Developer"
     ports:
@@ -17,7 +17,7 @@ services:
       - "5672:5672"
     environment:
       RABBITMQ_DEFAULT_USER: desafio
-      RABBITMQ_DEFAULT_PASS: Desafio@123
+      RABBITMQ_DEFAULT_PASS: Desafio123
       RABBITMQ_DEFAULT_VHOST: /
 
   fluxocaixa_api:
@@ -35,9 +35,10 @@ services:
       - "8002:443"
     environment:
       ASPNETCORE_ENVIRONMENT: "Development"
-      FLUXOCAIXA_CONNECTION_STRING: "Server=sqlserver;Database=FLUXO_CAIXA;User Id=sa;Password=Desafio@123"
-      IDENTIDADE_CONNECTION_STRING: "Server=sqlserver;Database=IDENTIDADE;User Id=sa;Password=Desafio@123"
-      MESSAGE_BUS_CONNECTION_STRING: "host=rabbitmq:5672;publisherConfirms=true;timeout=10;username=desafio;password=Desafio@123"
+      FLUXOCAIXA_CONNECTION_STRING: "Server=sqlserver;Database=FLUXO_CAIXA;User Id=sa;Password=Desafio123"
+      IDENTIDADE_CONNECTION_STRING: "Server=sqlserver;Database=IDENTIDADE;User Id=sa;Password=Desafio123"
+      MESSAGE_BUS_CONNECTION_STRING: "host=rabbitmq:5672;publisherConfirms=true;timeout=10;username=desafio;password=Desafio123"
+      HEALTH_CHECK_MESSAGE_BUS_CONNECTION: "amqp://desafio:Desafio123@rabbitmq:5672"
       IDENTIDADE_CHAVE: "o@df8dkH0isgh567DY@n"
 
   relatorio_consolidado_diario:
@@ -52,5 +53,6 @@ services:
       - ./relatorios:/app/Relatorios 
     environment:
       ASPNETCORE_ENVIRONMENT: "Development"
-      FLUXOCAIXA_CONNECTION_STRING: "Server=sqlserver;Database=FLUXO_CAIXA;User Id=sa;Password=Desafio@123;TrustServerCertificate=True;Encrypt=False;"
-      MESSAGE_BUS_CONNECTION_STRING: "host=rabbitmq:5672;publisherConfirms=true;timeout=10;username=desafio;password=Desafio@123"
+      FLUXOCAIXA_CONNECTION_STRING: "Server=sqlserver;Database=FLUXO_CAIXA;User Id=sa;Password=Desafio123;TrustServerCertificate=True;Encrypt=False;"
+      MESSAGE_BUS_CONNECTION_STRING: "host=rabbitmq:5672;publisherConfirms=true;timeout=10;username=desafio;password=Desafio123"
+      HEALTH_CHECK_MESSAGE_BUS_CONNECTION: "amqp://desafio:Desafio123@rabbitmq:5672"
