@@ -26,7 +26,8 @@ namespace FluxoCaixa.Infrastructure.Data.Migrations.FluxoCaixa
                 columns: table => new
                 {
                     ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    STATUS = table.Column<byte>(type: "tinyint", nullable: false)
+                    STATUS = table.Column<byte>(type: "tinyint", nullable: false),
+                    CAMINHOARQUIVO = table.Column<string>(type: "varchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {

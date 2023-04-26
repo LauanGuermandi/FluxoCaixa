@@ -6,6 +6,6 @@ namespace FluxoCaixa.Relatorio.ConsolidadoDiario.Data.Repositories;
 public interface IRelatorioRepository
 {
 	Task<RelatorioConsolidadoDiario> ObterRelatorioConsolidadoDiario(DateOnly data);
-
 	Task AlterarStatusRelatorio(Guid idRelatorio, RelatorioStatus status);
+	Task AlterarCaminhoRelatorio(Guid idRelatorio, string caminhoArquivo);
 }

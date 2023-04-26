@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using FluxoCaixa.Api.Configurations;
 using FluxoCaixa.Api.Helpers;
 using FluxoCaixa.Core.Converters;
@@ -25,6 +26,7 @@ builder.Services.AddRouting(options => options.LowercaseUrls = true);
 builder.Services.AddControllers()
 	.AddJsonOptions(options =>
 	{
+		options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
 		options.JsonSerializerOptions.Converters.Add(new DateOnlyJsonConverter());
 	});
 

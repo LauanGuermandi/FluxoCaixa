@@ -19,8 +19,5 @@ public class RelatorioMetadadosMapping : IEntityTypeConfiguration<RelatorioMetad
 			.HasColumnName("VALOR")
 			.HasColumnType("text")
 			.IsRequired();
-
-		builder.Property(x => x.IdRelatorio)
-			.HasColumnName("IDRELATORIO");
 	}
 }

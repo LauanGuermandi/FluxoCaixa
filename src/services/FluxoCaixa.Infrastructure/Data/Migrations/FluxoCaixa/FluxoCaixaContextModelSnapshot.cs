@@ -117,6 +117,10 @@ namespace FluxoCaixa.Infrastructure.Data.Migrations.FluxoCaixa
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("ID");
 
+                    b.Property<string>("CaminhoArquivo")
+                        .HasColumnType("varchar(max)")
+                        .HasColumnName("CAMINHOARQUIVO");
+
                     b.Property<byte>("Status")
                         .HasColumnType("tinyint")
                         .HasColumnName("STATUS");

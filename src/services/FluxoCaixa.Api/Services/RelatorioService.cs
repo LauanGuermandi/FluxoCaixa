@@ -18,7 +18,7 @@ public class RelatorioService : IRelatorioService
 		_bus = bus;
 	}
 
-	public async Task SolicitarRelatorioConsolidadoDiario(SolicitacaoRelatorioConsolidadoDiario solicitacaoRelatorioConsolidadoDiario)
+	public async Task<Relatorio> SolicitarRelatorioConsolidadoDiario(SolicitacaoRelatorioConsolidadoDiario solicitacaoRelatorioConsolidadoDiario)
 	{
 		var relatorioMetadados = ConverterParaJson(solicitacaoRelatorioConsolidadoDiario);
 		var relatorio = new Relatorio(relatorioMetadados);
@@ -27,7 +27,12 @@ public class RelatorioService : IRelatorioService
 
 		solicitacaoRelatorioConsolidadoDiario.IdRelatorio = relatorio.Id;
 		await _bus.PublishAsync(solicitacaoRelatorioConsolidadoDiario);
+
+		return relatorio;
 	}
+
+	public async Task<Relatorio> ObterRelatorio(Guid idRelatorio)
+		=> await _relatorioRepository.ObterRelatorioPorId(idRelatorio);
 
 	private static string ConverterParaJson(SolicitacaoRelatorioConsolidadoDiario solicitacaoRelatorioConsolidadoDiario)
 	{

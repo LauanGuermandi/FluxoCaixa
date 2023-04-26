@@ -20,6 +20,9 @@ public class RelatorioMapping : IEntityTypeConfiguration<Relatorio>
 			.HasColumnType("tinyint")
 			.IsRequired();
 
+		builder.Property(x => x.CaminhoArquivo)
+			.HasColumnType("varchar(max)");
+
 		builder.HasOne(x => x.Metadados)
 			.WithOne(x => x.Relatorio)
 			.HasForeignKey<RelatorioMetadados>(x => x.IdRelatorio);

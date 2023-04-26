@@ -1,4 +1,5 @@
-﻿using FluxoCaixa.Core.Logging;
+﻿using FluxoCaixa.Core.Exceptions;
+using FluxoCaixa.Core.Logging;
 using FluxoCaixa.Domain.Dtos;
 using FluxoCaixa.Domain.Services;
 using FluxoCaixa.Relatorio.ConsolidadoDiario.Data.Repositories;
@@ -34,13 +35,19 @@ public class RelatorioConsolidadoDiarioService : IRelatorioConsolidadoDiarioServ
 
 			var dadosRelatorio = dadosRelatorioConsolidadoDiario.Lancamentos
 									.Select(x => $"{x.Loja},{x.TipoLancamento},{x.Valor},{x.HoraLancamento}").ToList();
-			dadosRelatorio.Insert(0, "Loja,TipoLancamento,Valor");
+			dadosRelatorio.Insert(0, "Loja,TipoLancamento,Valor,HoraLancamento");
 
 			// Relatorios gerados no disco local para facilitar a implementação devido ao tempo.
-			SalvarRelatorioEmArquivo(nomeArquivo, dadosRelatorio.ToArray());
+			var caminhoArquivo = SalvarRelatorioEmArquivo(nomeArquivo, dadosRelatorio.ToArray());
 
 			await AlterarStatusRelatorioAsync(solicitacaoRelatorioConsolidadoDiario.IdRelatorio, RelatorioAggregation.RelatorioStatus.Finalizado);
 			_logger.LogInformation($"O relatório com ID '{solicitacaoRelatorioConsolidadoDiario.IdRelatorio}' foi finalizado.");
+
+			var arquivoInfo = new FileInfo(caminhoArquivo);
+			if (string.IsNullOrEmpty(arquivoInfo.FullName))
+				throw new UnexpectedError("Erro ao obter caminho do arquivo de relatório.");
+
+			await _relatorioRepository.AlterarCaminhoRelatorio(solicitacaoRelatorioConsolidadoDiario.IdRelatorio, $@"{arquivoInfo.FullName}");
 		}
 		catch (Exception ex)
 		{
@@ -55,8 +62,12 @@ public class RelatorioConsolidadoDiarioService : IRelatorioConsolidadoDiarioServ
 			Directory.CreateDirectory(CaminhoRelatorios);
 	}
 
-	private static void SalvarRelatorioEmArquivo(string nomeArquivo, string[] dadosRelatorio)
-		=> File.WriteAllLines($"{CaminhoRelatorios}/{nomeArquivo}.csv", dadosRelatorio);
+	private static string SalvarRelatorioEmArquivo(string nomeArquivo, string[] dadosRelatorio)
+	{
+		var caminhoArquivo = $"{CaminhoRelatorios}/{nomeArquivo}.csv";
+		File.WriteAllLines(caminhoArquivo, dadosRelatorio);
+		return caminhoArquivo;
+	}
 
 	private async Task AlterarStatusRelatorioAsync(Guid idRelatorio, RelatorioAggregation.RelatorioStatus status)
 		=> await _relatorioRepository.AlterarStatusRelatorio(idRelatorio, status);

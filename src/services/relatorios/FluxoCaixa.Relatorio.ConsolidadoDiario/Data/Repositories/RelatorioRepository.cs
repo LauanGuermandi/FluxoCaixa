@@ -46,4 +46,10 @@ public class RelatorioRepository : IRelatorioRepository
 		await connection.QueryAsync(query);
 	}
 
+	public async Task AlterarCaminhoRelatorio(Guid idRelatorio, string caminhoArquivo)
+	{
+		var query = $@"UPDATE RELATORIOS SET CAMINHOARQUIVO = '{caminhoArquivo}'";
+		using var connection = _context.CreateConnection();
+		await connection.QueryAsync(query);
+	}
 }
