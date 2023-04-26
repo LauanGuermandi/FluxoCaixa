@@ -26,15 +26,16 @@ public class RelatorioConsolidadoDiarioService : IRelatorioConsolidadoDiarioServ
 
 			var nomeArquivo = solicitacaoRelatorioConsolidadoDiario.Data.ToString().Replace("/", "-");
 
-			var dadosRelatorio = dadosRelatorioConsolidadoDiario.Lancamentos.Select(x => $"{x.TipoLancamento},{x.Valor}").ToList();
-			dadosRelatorio.Insert(0, "Tipo de lançamento,Valor");
+			var dadosRelatorio = dadosRelatorioConsolidadoDiario.Lancamentos
+									.Select(x => $"{x.Loja},{x.TipoLancamento},{x.Valor},{x.HoraLancamento}").ToList();
+			dadosRelatorio.Insert(0, "Loja,TipoLancamento,Valor");
 
 			// Relatorios gerados no disco local para facilitar a implementação devido ao tempo.
 			SalvarRelatorioEmArquivo(nomeArquivo, dadosRelatorio.ToArray());
 
 			await AlterarStatusRelatorioAsync(solicitacaoRelatorioConsolidadoDiario.IdRelatorio, RelatorioAggregation.RelatorioStatus.Finalizado);
 		}
-		catch (Exception)
+		catch (Exception ex)
 		{
 			await AlterarStatusRelatorioAsync(solicitacaoRelatorioConsolidadoDiario.IdRelatorio, RelatorioAggregation.RelatorioStatus.Erro);
 		}

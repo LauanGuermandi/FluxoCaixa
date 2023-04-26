@@ -16,12 +16,18 @@ public class RelatorioRepository : IRelatorioRepository
 	public async Task<RelatorioConsolidadoDiario> ObterRelatorioConsolidadoDiario(DateOnly data)
 	{
 		var query = $@" SELECT
+							LJ.NOME as 'Loja',
 							CASE
-								WHEN TIPOLANCAMENTO = 1 THEN 'Crédito'
-								ELSE 'Débito'
+								WHEN L.TIPOLANCAMENTO = 1 THEN 'Credito'
+								ELSE 'Debito'
 							END as 'TipoLancamento',
-							Valor
-						FROM LANCAMENTOS
+							L.VALOR,
+							CAST(L.HORALANCAMENTO AS VARCHAR) as 'HoraLancamento'
+						FROM LANCAMENTOS as L
+						LEFT JOIN CAIXAS as C
+							ON C.ID = L.IDCAIXA
+						LEFT JOIN LOJAS as LJ
+							ON LJ.IDCAIXA = C.ID
 						WHERE DATALANCAMENTO = '{data.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture)}'";
 
 		using var connection = _context.CreateConnection();
