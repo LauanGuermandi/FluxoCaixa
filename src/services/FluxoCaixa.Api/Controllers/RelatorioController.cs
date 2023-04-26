@@ -8,6 +8,7 @@ namespace FluxoCaixa.Api.Controllers;
 
 public class RelatorioController : MainController
 {
+
 	private readonly IRelatorioService _relatorioService;
 	private readonly IMapper _mapper;
 

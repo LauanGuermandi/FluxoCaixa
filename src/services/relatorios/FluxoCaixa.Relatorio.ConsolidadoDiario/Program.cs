@@ -3,12 +3,14 @@ using FluxoCaixa.Relatorio.ConsolidadoDiario;
 using FluxoCaixa.Relatorio.ConsolidadoDiario.Data.Context;
 using FluxoCaixa.Relatorio.ConsolidadoDiario.Data.Repositories;
 using FluxoCaixa.Relatorio.ConsolidadoDiario.Services;
+using Logging;
 using MessageBus;
 using Serilog;
 
 var host = Host.CreateDefaultBuilder(args)
 	.ConfigureServices(services =>
 	{
+		services.AddLoggerConfiguration(ServiceLifetime.Singleton);
 		services.AddMessageBusConfiguration();
 		services.AddSingleton<FluxoPagamentoContext>();
 
