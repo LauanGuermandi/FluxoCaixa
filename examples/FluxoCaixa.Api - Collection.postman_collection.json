@@ -1,0 +1,207 @@
+{
+	"info": {
+		"_postman_id": "40f48ccf-32e5-45eb-9a16-a2a0c418a990",
+		"name": "FluxoCaixa.Api - Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25791152",
+		"_collection_link": "https://solar-star-805824.postman.co/workspace/Paschoalotto~f616dbe2-2753-4e6a-8a91-06a4bfd28e06/collection/25791152-40f48ccf-32e5-45eb-9a16-a2a0c418a990?action=share&creator=25791152&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "Autenticação",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"admingeral@desafio.com.br\",\r\n  \"senha\": \"Desafio@123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8001/api/identidade/autenticar",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8001",
+					"path": [
+						"api",
+						"identidade",
+						"autenticar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lançamento - Crédito",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMmM2YzE2My1lMmUzLTQ3OWMtYTQ3ZS0zYzZjMTM3MWU1NGEiLCJqdGkiOiJmOWM2MmM1NC1hN2M3LTRhMjctYWE1Mi0xNDQyMTc5ZGEyMDIiLCJuYmYiOjE2ODI1MjIxNTUsImlhdCI6MTY4MjUyMjE1NSwiZW1haWwiOiJhZG1pbmdlcmFsQGRlc2FmaW8uY29tLmJyIiwiZXhwIjoxNjgyNjA4NTU1LCJpc3MiOiJkZXNhZmlvIiwiYXVkIjoiaHR0cHM6Ly9kZXNhZmlvLmNvbS5iciJ9.N5K1uZxgusE4tiPu7JgbWJKovEtGkJ3Cnmh1PimDk-o",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"valor\": 100,\r\n  \"tipoLancamento\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8001/api/lancamento/adicionar-lancamento",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8001",
+					"path": [
+						"api",
+						"lancamento",
+						"adicionar-lancamento"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lançamento - Débito",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMmM2YzE2My1lMmUzLTQ3OWMtYTQ3ZS0zYzZjMTM3MWU1NGEiLCJqdGkiOiJmOWM2MmM1NC1hN2M3LTRhMjctYWE1Mi0xNDQyMTc5ZGEyMDIiLCJuYmYiOjE2ODI1MjIxNTUsImlhdCI6MTY4MjUyMjE1NSwiZW1haWwiOiJhZG1pbmdlcmFsQGRlc2FmaW8uY29tLmJyIiwiZXhwIjoxNjgyNjA4NTU1LCJpc3MiOiJkZXNhZmlvIiwiYXVkIjoiaHR0cHM6Ly9kZXNhZmlvLmNvbS5iciJ9.N5K1uZxgusE4tiPu7JgbWJKovEtGkJ3Cnmh1PimDk-o",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"valor\": 100,\r\n  \"tipoLancamento\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8001/api/lancamento/adicionar-lancamento",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8001",
+					"path": [
+						"api",
+						"lancamento",
+						"adicionar-lancamento"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Relatório - Consolidado Diário",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMmM2YzE2My1lMmUzLTQ3OWMtYTQ3ZS0zYzZjMTM3MWU1NGEiLCJqdGkiOiJmOWM2MmM1NC1hN2M3LTRhMjctYWE1Mi0xNDQyMTc5ZGEyMDIiLCJuYmYiOjE2ODI1MjIxNTUsImlhdCI6MTY4MjUyMjE1NSwiZW1haWwiOiJhZG1pbmdlcmFsQGRlc2FmaW8uY29tLmJyIiwiZXhwIjoxNjgyNjA4NTU1LCJpc3MiOiJkZXNhZmlvIiwiYXVkIjoiaHR0cHM6Ly9kZXNhZmlvLmNvbS5iciJ9.N5K1uZxgusE4tiPu7JgbWJKovEtGkJ3Cnmh1PimDk-o",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"data\": \"26/04/2023\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8001/api/relatorio/consolidado-diario",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8001",
+					"path": [
+						"api",
+						"relatorio",
+						"consolidado-diario"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Relatório - Consolidado Diário Copy",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMmM2YzE2My1lMmUzLTQ3OWMtYTQ3ZS0zYzZjMTM3MWU1NGEiLCJqdGkiOiJmOWM2MmM1NC1hN2M3LTRhMjctYWE1Mi0xNDQyMTc5ZGEyMDIiLCJuYmYiOjE2ODI1MjIxNTUsImlhdCI6MTY4MjUyMjE1NSwiZW1haWwiOiJhZG1pbmdlcmFsQGRlc2FmaW8uY29tLmJyIiwiZXhwIjoxNjgyNjA4NTU1LCJpc3MiOiJkZXNhZmlvIiwiYXVkIjoiaHR0cHM6Ly9kZXNhZmlvLmNvbS5iciJ9.N5K1uZxgusE4tiPu7JgbWJKovEtGkJ3Cnmh1PimDk-o",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8001/api/relatorio/5f4e272f-a722-4594-8411-625139516e61",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8001",
+					"path": [
+						"api",
+						"relatorio",
+						"5f4e272f-a722-4594-8411-625139516e61"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
