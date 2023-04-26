@@ -3,6 +3,7 @@ using FluxoCaixa.Api.Configurations;
 using FluxoCaixa.Api.Helpers;
 using FluxoCaixa.Core.Converters;
 using FluxoCaixa.Core.WebApi.Configurations;
+using FluxoCaixa.Core.WebApi.Middlewares;
 using FluxoCaixa.Domain.Models.Identidade;
 using FluxoCaixa.Infrastructure.CrossCutting.Mappers;
 using FluxoCaixa.Infrastructure.Data.Configurations;
@@ -30,6 +31,9 @@ builder.Services.AddControllers()
 		options.JsonSerializerOptions.Converters.Add(new DateOnlyJsonConverter());
 	});
 
+// Adiciona configurações de validação
+builder.Services.AddValidationConfiguration();
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwagger("FluxoCaixa.Api");
 
@@ -56,6 +60,8 @@ builder.Services.AddFluxoCaixaContextConfiguration();
 builder.Services.AddMessageBusConfiguration();
 
 var app = builder.Build();
+
+app.UseMiddleware<GlobalExceptionMiddleware>();
 
 // Executa as migrations de seed no start da aplicação
 await DatabaseMigrationHelpers.RunMigrations(app);

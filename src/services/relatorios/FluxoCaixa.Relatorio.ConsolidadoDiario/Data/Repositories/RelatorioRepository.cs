@@ -18,7 +18,7 @@ public class RelatorioRepository : IRelatorioRepository
 		var query = $@" SELECT
 							LJ.NOME as 'Loja',
 							CASE
-								WHEN L.TIPOLANCAMENTO = 1 THEN 'Credito'
+								WHEN L.TIPOLANCAMENTO = 2 THEN 'Credito'
 								ELSE 'Debito'
 							END as 'TipoLancamento',
 							L.VALOR,
