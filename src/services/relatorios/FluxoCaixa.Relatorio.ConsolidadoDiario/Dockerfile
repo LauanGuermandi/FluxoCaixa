@@ -18,5 +18,7 @@ RUN dotnet publish "FluxoCaixa.Relatorio.ConsolidadoDiario.csproj" -c Release -o
 
 FROM base AS final
 WORKDIR /app
+RUN mkdir /app/Relatorios
+RUN chmod 775 -R /app/Relatorios
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "FluxoCaixa.Relatorio.ConsolidadoDiario.dll"]
